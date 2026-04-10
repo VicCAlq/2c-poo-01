@@ -305,7 +305,9 @@ Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome d
 */
 // Escreva o código da solução abaixo:
 
-export const resposta1 = false
+const aluno = {nome: "eduardo", idade: 17, cidade: "recife", curso: "programação"}
+
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,6 +319,19 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
+
+const produto = {nome: "notebook", preco: 3500, quantidadeEstoque: 15, categoria: "Eletronicos",
+  multiplicar: function(preco) {
+    this.quantidadeEstoque = this.quantidadeEstoque * preco
+  }
+}
+
+u : function(){
+  return this.quantidadeEstoque
+}
+produto.multiplicar
+
+console.log(produto.)
 
 export const resposta2 = false
 
