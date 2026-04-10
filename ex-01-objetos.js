@@ -582,8 +582,31 @@ Execute:
 3. Armazene na variável resposta10 um objeto com: { tempoTotal: resultado de calcularTempoTotal(), quantidadeIngredientes: tamanho do array de ingredientes }
 */
 // Escreva o código da solução abaixo:
+const receitaOmelete = {
+  nome: "Omelete de Queijo",
+  porcoes: 1,
+  ingredientes: ["ovos", "queijo", "sal"],
+  tempoPreparo: 5,
+  tempoCozimento: 5,
 
-export const resposta10 = false
+  adicionarIngrediente: function(ingrediente) {
+    if (ingredientes.includes(ingrediente)) {
+      this.ingredientes.push(ingrediente)
+    }
+  },
+
+  calcularTempoTotal: function() {
+    return this.tempoPreparo + this.tempoCozimento
+  }
+}
+
+receitaOmelete.adicionarIngrediente("salsicha")
+receitaOmelete.adicionarIngrediente("presunto")
+
+export const resposta10 = {
+  tempoTotal: receitaOmelete.calcularTempoTotal(),
+  quantidadeIngredientes: receitaOmelete.ingredientes.length
+}
 
 /* Questão 11
 Usando a mesma lista de ingredientes dos exercícios anteriores.
@@ -603,8 +626,44 @@ Adicione ambas ao livro de receitas usando adicionarReceita().
 Armazene na variável resposta11 o resultado de filtrarPorIngrediente("manteiga") (deve retornar as receitas que usam manteiga).
 */
 // Escreva o código da solução abaixo:
+const livroReceitas = {
+  receitas: [],
 
-export const resposta11 = false
+  adicionarReceita: function(receita) {
+    this.receitas.push(receita)
+  },
+
+  buscarReceitaPorNome: function(nome) {
+    return this.receitas.find(r => r.nome === nome) || null
+  },
+
+  listarTodasReceitas: function() {
+    return this.receitas.map(r => r.nome)
+  },
+
+  filtrarPorIngrediente: function(ingrediente) {
+    return this.receitas.filter(r => r.ingredientes.includes(ingrediente))
+  }
+}
+
+// Receitas
+const strogonoff = {
+  nome: "Strogonoff de Frango",
+  ingredientes: ["frango", "cebola", "alho", "manteiga"],
+  tempo: 40
+}
+
+const macarrao = {
+  nome: "Macarrão com Queijo",
+  ingredientes: ["queijo", "manteiga", "sal"],
+  tempo: 20
+}
+
+// Execução
+livroReceitas.adicionarReceita(strogonoff)
+livroReceitas.adicionarReceita(macarrao)
+
+export const resposta11 = livroReceitas.filtrarPorIngrediente("manteiga")
 
 /* Questão 12
 Usando a mesma lista de ingredientes dos exercícios anteriores.
@@ -624,5 +683,37 @@ Execute:
 4. Armazene na variável resposta12 o resultado de contarReceitas()
 */
 // Escreva o código da solução abaixo:
+const cozinheiro = {
+  nome: "Chef João",
+  especialidade: "Culinária Brasileira",
+  receitasCriadas: [],
 
-export const resposta12 = false
+  criarReceita: function(nome, ingredientesReceita, tempo) {
+    const ingredientesValidos = ingredientesReceita.filter(i => ingredientes.includes(i))
+
+    const receita = {
+      nome: nome,
+      ingredientes: ingredientesValidos,
+      tempo: tempo
+    }
+
+    this.receitasCriadas.push(receita)
+  },
+
+  verificarPossibilidade: function(disponiveis) {
+    return this.receitasCriadas
+      .filter(r => r.ingredientes.every(i => disponiveis.includes(i)))
+      .map(r => r.nome)
+  },
+
+  contarReceitas: function() {
+    return this.receitasCriadas.length
+  }
+}
+
+cozinheiro.criarReceita("Pão de Queijo", ["queijo", "ovos", "óleo"], 30)
+cozinheiro.criarReceita("Frango Assado", ["frango", "alho", "cebola", "óleo", "sal"], 60)
+
+cozinheiro.verificarPossibilidade(["ovos", "queijo", "óleo", "frango", "sal"])
+
+export const resposta12 = cozinheiro.contarReceitas()
