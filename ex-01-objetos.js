@@ -304,8 +304,13 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
-
-export const resposta1 = false
+let aluno = {
+  nome:"Abner",
+  idade:15,
+  cidade:"Recife",
+   curso:"Programação de jogos digitais",
+};
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +322,15 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
+let produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos"
+};
+let valorTotalEstoque = produto.preco * produto.quantidadeEstoque;
 
-export const resposta2 = false
+export const resposta2 = valorTotalEstoque;
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,6 +343,7 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
+
 
 export const resposta3 = false
 
