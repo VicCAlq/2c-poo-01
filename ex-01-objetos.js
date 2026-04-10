@@ -304,8 +304,14 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
+const aluno = {
+  nome: "Mateus",
+  idade: 16,
+  cidade: "Recife",
+  curso: "Programacao"
+}
 
-export const resposta1 = false
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +323,18 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
+const produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos",
 
-export const resposta2 = false
+  valorTotalEstoque: function() {
+    return this.preco * this.quantidadeEstoque
+  }
+}
+
+export const resposta2 = produto.valorTotalEstoque
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,8 +347,15 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
-
-export const resposta3 = false
+const filme = {
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  disponivelStreaming: false,
+  nota: 9.5
+} 
+export const resposta3 = Object.keys(filme)
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -343,8 +366,13 @@ Armazene na variável resposta4 um novo objeto contendo apenas as configuraçõe
 O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
+const configuracoes = {
+  tema: { modo: "escuro", corPrincipal: "#333" },
+  notificacoes: { email: true, push: false, sms: true },
+  idioma: "pt-BR"
+}
 
-export const resposta4 = false
+export const resposta4 = {email: true, sms: true}
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
@@ -358,8 +386,29 @@ Execute os seguintes passos:
 3. Armazene na variável resposta5 o resultado de obterValor()
 */
 // Escreva o código da solução abaixo:
+const contador = {
+  valor: 0,
 
-export const resposta5 = false
+  incrementar: function() {
+    this.valor++
+  },
+
+  decrementar: function() {
+    this.valor--
+  },
+
+  obterValor: function() {
+    return this.valor
+  }
+}
+
+for(let i = 0; i < 3; i++) {
+  contador.incrementar()
+}
+
+contador.decrementar()
+
+export const resposta5 = obterValor()
 
 /* Questão 6
 Crie um objeto chamado `termometro` com:
@@ -373,8 +422,26 @@ Execute:
 3. Armazene na variável resposta6 um objeto no formato: { fahrenheit: tempF, celsius: resultado de obterTemperatura() }
 */
 // Escreva o código da solução abaixo:
+const termometro = {
+  temperaturaCelsius: 25,
 
-export const resposta6 = false
+  converterParaFahrenheit: function() {
+    return (this.temperaturaCelsius * 9/5) + 32
+  },
+
+  definirTemperatura: function(valor) {
+    this.temperaturaCelsius = valor
+  },
+
+  obterTemperatura: function() {
+    return `${this.temperaturaCelsius}°C` 
+  }
+}
+
+const tempF = termometro.converterParaFahrenheit()
+termometro.definirTemperatura(100)
+
+export const resposta6 = { fahrenheit: tempF, celsius: termometro.obterTemperatura() }
 
 /* Questão 7
 Crie um objeto chamado `carrinho` que represente um carrinho de compras com:
@@ -387,8 +454,28 @@ Execute:
 2. Armazene na variável resposta7 um objeto com: { total: resultado de calcularTotal(), quantidade: resultado de quantidadeItens() }
 */
 // Escreva o código da solução abaixo:
+const carrinho = {
+  itens: [],
 
-export const resposta7 = false
+  adicionarItem: function(nome, preco) {
+    this.itens.push({nome: nome, preco: preco})
+  },
+
+  calcularTotal: function() {
+    let i = 0
+
+    for(it of this.itens) {
+      i += it.preco
+    }
+
+    return i
+  },
+
+  quantidadeItens: function() {
+    return this.itens.length
+  },
+}
+export const resposta7 = { total: carrinho.calcularTotal(), quantidade: carrinho.quantidadeItens() }
 
 /* Questão 8
 Crie um objeto chamado `jogador` que represente um personagem de jogo com:
@@ -406,11 +493,41 @@ Execute:
 4. Armazene na variável resposta8 o resultado de status()
 */
 // Escreva o código da solução abaixo:
+const jogador = {
+  nome: "Herói",
+  vida: 100,
+  nivel: 1,
+  experiencia: 0,
 
-export const resposta8 = false
+  atacar: function(dano) {
+    this.vida -= dano
+    if (this.vida < 0) {
+      this.vida = 0
+    }
+  },
+
+  ganharExperiencia: function(xp) {
+    this.experiencia += xp
+
+    if (this.experiencia >= 100) {
+      this.nivel += 1
+      this.experiencia = 0
+    }
+  },
+
+  status: function() {
+    return `${this.nome} - Nível ${this.nivel} - Vida: ${this.vida} - XP: ${this.experiencia}`
+  }
+}
+
+jogador.atacar(30)
+jogador.ganharExperiencia(50)
+jogador.ganharExperiencia(60)
+
+export const resposta8 = jogador.status()
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
@@ -430,7 +547,23 @@ Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
 // Escreva o código da solução abaixo:
 
-export const resposta9 = false
+const receitaBolo = {
+  nome: "Bolo de Chocolate",
+  porcoes: 8,
+  ingredientes: ["farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", "fermento"],
+  tempoPreparo: 45,
+  tempoForno: 30,
+
+  listarIngredientes: function() {
+    return this.ingredientes.join(", ")
+  },
+
+  calcularTempoTotal: function() {
+    return this.tempoPreparo + this.tempoForno
+  }
+}
+
+export const resposta9 = receitaBolo.calcularTempoTotal()
 
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
