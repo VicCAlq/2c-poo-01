@@ -304,8 +304,14 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
+let alunos = {
+  nome: "Triple Txxxxx",
+  idade: 67,
+  cidade: "TungTunlandiaxxxx",
+  curso: "Tecnicoxxxx em Pescariaxxxx",
+}
 
-export const resposta1 = false
+export const resposta1 = alunos.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +323,16 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
-
-export const resposta2 = false
+let produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos",
+  valorTotalEstoque: function() {
+    return this.preco * this.quantidadeEstoque
+  }
+}
+export const resposta2 = produto.valorTotalEstoque()
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,7 +345,20 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
-
+let filme = {
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  disponivelStreaming: true,
+  indisponivel: function() {
+    this.disponivelStreaming = false
+  },
+  adicionarNota: function(pontuacao) {
+    this.nota = pontuacao
+    this.nota = 9.5
+  }
+}
 export const resposta3 = false
 
 /* Questão 4
@@ -409,10 +436,10 @@ Execute:
 
 export const resposta8 = false
 
-export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
-  "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
-  "alho", "óleo", "frango" 
+export const ingredientes = [
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate",
+  "fermento", "sal", "queijo", "presunto", "tomate", "cebola",
+  "alho", "óleo", "frango"
 ]
 
 /* Questão 9
