@@ -305,7 +305,14 @@ Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome d
 */
 // Escreva o código da solução abaixo:
 
-export const resposta1 = false
+const aluno = {
+  nome: "Davi Barboza",
+  idade: "16",
+  cidade: "Jabotaão dos Guararapes",
+  curso: "Programação de Jogos Digitais"
+}
+
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -318,7 +325,16 @@ Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
 
-export const resposta2 = false
+const produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos"
+}
+
+let valoraTotalEstoque = produto.preco * quantidadeEstoque
+
+export const resposta2 = valoraTotalEstoque
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,6 +347,15 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
+
+const filme = {
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  streamingDisponivel: true
+
+}
 
 export const resposta3 = false
 
@@ -410,7 +435,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
