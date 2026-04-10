@@ -305,7 +305,14 @@ Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome d
 */
 // Escreva o código da solução abaixo:
 
-export const resposta1 = false
+const aluno = {
+  nome: "Renato",
+  idade: 15,
+  cidade: "Recife",
+  curso: "Programacao",
+}
+
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -318,7 +325,15 @@ Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
 
-export const resposta2 = false
+const produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos"
+}
+const valorTotalEstoque = produto.preco * produto.quantidadeEstoque
+
+export const resposta2 = valorTotalEstoque
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -332,7 +347,18 @@ Armazene na variável resposta3 um array contendo todas as chaves (nomes das pro
 */
 // Escreva o código da solução abaixo:
 
-export const resposta3 = false
+const filme = {
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  disponivelStreaming: true
+}
+filme.disponivelStreaming = false
+
+filme.nota = 9.5
+
+export const resposta3 = Object.keys(filme)
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -344,7 +370,16 @@ O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
 
-export const resposta4 = false
+const configuracoes = {
+  tema: { modo: "escuro", corPrincipal: "#333" },
+  notificacoes: { email: true, push: false, sms: true },
+  idioma: "pt-BR"
+}
+const notificacoesAtivas = Object.entries(configuracoes.notificacoes)
+  .filter(([chave, valor]) => valor === true)
+
+
+export const resposta4 = Object.fromEntries(notificacoesAtivas)
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
@@ -410,7 +445,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
