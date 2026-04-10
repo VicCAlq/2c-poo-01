@@ -1,6 +1,6 @@
 /*
 Assunto - Objetos e Métodos em JavaScript
-
+f
 Um objeto em JavaScript é uma estrutura que nos permite agrupar dados e 
 funcionalidades relacionadas em uma única entidade. Diferente de outras 
 linguagens, JavaScript não exige o uso de classes para criar objetos - podemos 
