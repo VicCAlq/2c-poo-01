@@ -304,8 +304,13 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
-
-export const resposta1 = false
+let aluno = {
+  nome: "max",
+  idade: 23,
+  cidade: "hawkins",
+  curso: "teatro",
+}
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +322,15 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
-
-export const resposta2 = false
+let produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletronicos",
+}
+let valorTotalEstoque = produto.preco * produto.quantidadeEstoque
+ 
+export const resposta2 = valorTotalEstoque
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,7 +343,14 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
-
+let filme = {
+titulo: "OPoderosoChefão",
+ ano: 1972,
+ diretor: "FrancisFordCoppola",
+ genero: "Drama",
+ disponivelStreaming: false,
+}
+let nota = 9.5
 export const resposta3 = false
 
 /* Questão 4
@@ -410,7 +429,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
@@ -429,8 +448,16 @@ Crie um objeto chamado `receitaBolo` que represente uma receita de bolo de choco
 Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
 // Escreva o código da solução abaixo:
-
-export const resposta9 = false
+let receitaBolo = {
+nome: "Bolo de Chocolate",
+porcoes: 8,
+ingredientes: [farinha, ovos, leite, acucar, manteiga, chocolate, fermento, sal,],
+tempoPreparo: 45,
+tempoForno: 30,
+listarIngredientes: [ farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango ],
+calcularTempoTotal: (tempoPreparo + tempoForno),
+}
+export const resposta9 = calcularTempoTotal
 
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
