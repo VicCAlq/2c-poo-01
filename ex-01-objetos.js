@@ -304,8 +304,14 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
+let aluno = {
+  nome: "Neil",
+  idade: 16,
+  cidade: "Londres",
+  curso: "Econômia",
+}
 
-export const resposta1 = false
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +323,16 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
+let produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos"
+}
 
-export const resposta2 = false
+let valorTotalEstoque = preco * quantidadeEstoque;
+
+export const resposta2 = valorTotalEstoque
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,8 +345,16 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
+let filme = {
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  disponivelStreaming: false,
+  nota: 9.5
+}
 
-export const resposta3 = false
+export const resposta3 = Object.keys(filme);
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -343,8 +365,14 @@ Armazene na variável resposta4 um novo objeto contendo apenas as configuraçõe
 O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
+let configuracoes = {
+  tema: { modo: "escuro", corPrincipal: "#333" },
+  notificacoes: { email: true, push: false, sms: true },
+  idioma: "pt-BR"
+}
 
-export const resposta4 = false
+
+export const resposta4 = Object.fromEntries(Object.entries(configuracoes.notificacoes).filter(([_, valor]) => valor === true)
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
@@ -388,6 +416,7 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
+
 export const resposta7 = false
 
 /* Questão 8
@@ -410,7 +439,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
