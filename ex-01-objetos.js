@@ -304,8 +304,14 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
+const aluno = {
+  nome: "Manjericão",
+  idade: 10,
+  cidade: "Aueaue",
+  curso: "GameDev",
+}
 
-export const resposta1 = false
+export const resposta1 = aluno
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +323,15 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
+const produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEmEstoque: 15,
+  categoria: "Eletrônicos",
+  valorTotalEstoque: function(){ return this.preco * this.quantidadeEmEstoque},
+}
 
-export const resposta2 = false
+export const resposta2 = produto.valorTotalEstoque();
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,8 +344,16 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
+const filme = {
+  titulo: "Demon Slayer: Infinite Castle",
+  ano: "2025",
+  diretor: "Haruo Sotozaki",
+  genero: "Ação",
+  disponivelStreaming: false,
+  nota: "8.4"
+}
 
-export const resposta3 = false
+export const resposta3 = filme;
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -343,7 +364,14 @@ Armazene na variável resposta4 um novo objeto contendo apenas as configuraçõe
 O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
-
+const configuracoes = {
+  tema: { modo: "escuro", corPrincipal: "#333" },
+  notificacoes: { email: true, push: false, sms: true },
+  idioma: "pt-BR",
+}
+const newObject = {
+  notificacoes: true
+}
 export const resposta4 = false
 
 /* Questão 5
@@ -410,7 +438,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
