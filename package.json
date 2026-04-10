@@ -1,0 +1,19 @@
+{
+  "name": "Atividade",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run --reporter=json --output-file=./resultado.json",
+    "tr": "timeout --signal=SIGKILL 5s npx vitest run --reporter=json --output-file=./resultado.json --pool=forks --testTimeout=5000 || true",
+    "th": "vitest --help",
+    "trh": "vitest run --help"
+  },
+  "devDependencies": {
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  }
+}
