@@ -304,8 +304,14 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
+const aluno = {
+    nome: "Bandolé",
+    idade: 16,
+    cidade: "Recife",
+    curso: "Programação"
+}
 
-export const resposta1 = false
+export const resposta1 = aluno.nome;
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +323,15 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
+const produto = {
+    nome: "Notebook",
+    preco: 3500,
+    quantidadeEstoque: 15,
+    categoria: "Eletrônicos",
+    valorTotalEstoque: function() { return this.preco * this.quantidadeEstoque },
+}
 
-export const resposta2 = false
+ export const resposta2 = produto.valorTotalEstoque();
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -331,8 +344,17 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
+const filme = {
+    titulo: "O Poderoso Chefão",
+    ano: 1972,
+    diretor: "Francis Ford Coppola",
+    genero: "Drama",
+    disponivelStreaming: false,
+    nota: 9.5,
+}
+console.log(Object.keys(filme));
 
-export const resposta3 = false
+export const resposta3 = Object.keys(filme)
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -410,7 +432,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
