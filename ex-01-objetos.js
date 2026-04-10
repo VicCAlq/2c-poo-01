@@ -358,7 +358,7 @@ let filme = {
 
 }
 
-export const resposta3 = false
+export const resposta3 = false 
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
