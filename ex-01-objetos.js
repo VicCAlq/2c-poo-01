@@ -305,7 +305,14 @@ Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome d
 */
 // Escreva o código da solução abaixo:
 
-export const resposta1 = false
+let aluno = {
+  nome: "Severinu",
+  idade: 110,
+  cidade: "Pontezinha",
+  curso: "Computaria",
+}
+
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -318,8 +325,18 @@ Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
 
-export const resposta2 = false
+let produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos",
 
+  matheusQuebraCodigu: function() {
+    produto.preco * produto.quantidadeEstoque
+  }
+} 
+
+export const resposta2 = produto.matheusQuebraCodigu
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
 - titulo: "O Poderoso Chefão"
@@ -331,6 +348,15 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
+
+let filme = {
+    titulo: "O Poderoso Chefão",
+    ano: 1972,
+    diretor:"Francis Ford Coppola",
+    genero: "Drama",
+    disponivelstreaming: true,
+
+}
 
 export const resposta3 = false
 
