@@ -410,7 +410,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
