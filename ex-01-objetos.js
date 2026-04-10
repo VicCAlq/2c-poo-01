@@ -304,8 +304,13 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
-
-export const resposta1 = false
+const aluno = {
+  nome: "pedro",
+  idade: 16,
+  cidade: "recife",
+  curso: "programação",
+}
+export const resposta1 =  aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -317,8 +322,17 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
+const produto = {
+   nome: "Notebook",
+   preco: 3500,
+   quantidadeEstoque: 15,
+   categoria: "Eletrônicos",
+   valorTotalEstoque: function() { 
+     return this.preco * this.quantidadeEstoque 
+   }
+  }
 
-export const resposta2 = false
+export const resposta2 = produto.valorTotalEstoque()
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
