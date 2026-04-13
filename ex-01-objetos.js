@@ -350,7 +350,15 @@ const filme = {
   ano: 1972,
   diretor: "Francis Ford Coppola",
   genero: "Drama",
-  disponivelStreaming: true
+  disponivelStreaming: true,
+
+  falso: function(){
+    this.disponivelStreaming = false
+  },
+
+  adicionarNota: function(){
+    
+  }
 }
 export const resposta3 = false
 
