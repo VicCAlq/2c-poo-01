@@ -332,11 +332,12 @@ let produto = {
   categoria: "Eletrônicos",
 
   matheusQuebraCodigu: function() {
-    produto.preco * produto.quantidadeEstoque
+    return this.preco * this.quantidadeEstoque
   }
-} 
+}
 
-export const resposta2 = produto.matheusQuebraCodigu
+export const resposta2 = produto.matheusQuebraCodigu()
+
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
 - titulo: "O Poderoso Chefão"
@@ -350,15 +351,21 @@ Armazene na variável resposta3 um array contendo todas as chaves (nomes das pro
 // Escreva o código da solução abaixo:
 
 let filme = {
-    titulo: "O Poderoso Chefão",
-    ano: 1972,
-    diretor:"Francis Ford Coppola",
-    genero: "Drama",
-    disponivelstreaming: true,
-
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  disponivelStreaming: true,
 }
 
-export const resposta3 = false 
+// Eu acho que isso altera o valor
+filme.disponivelStreaming = false
+
+// Isso vai adicionar uma nova propriedade
+filme.nota = 9.5
+
+// pegar as chaves
+export const resposta3 = Object.keys(filme)
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -370,7 +377,28 @@ O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
 
-export const resposta4 = false
+let configuracoes = {
+  tema: { 
+    modo: "escuro",
+    corPrincipal: "#333",
+  },
+  notificacoes: {
+    email: true,
+    push: false,
+    sms: true
+  },
+  idioma: "pt-BR"
+}
+
+let ativas = {}
+
+for (let chave in configuracoes.notificacoes) {
+  if (configuracoes.notificacoes[chave]) {
+    ativas[chave] = true
+  }
+}
+
+export const resposta4 = ativas
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
