@@ -353,11 +353,14 @@ const filme = {
   ano: 1972,
   diretor: "Francis Ford Coppola",
   genero: "Drama",
-  streamingDisponivel: true
-
+  disponivelStreaming: true
 }
 
-export const resposta3 = false
+disponivelStreaming = false
+
+filme.nota = 9.5
+
+export const resposta3 = Object.keys(filme)
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
