@@ -305,7 +305,14 @@ Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome d
 */
 // Escreva o código da solução abaixo:
 
-export const resposta1 = false
+const aluno = {
+  nome: "Débora",
+  idade: "16",
+  cidade: "Recife",
+  curso: "Programação de Jogos Digitais"
+}
+
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -318,7 +325,15 @@ Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
 
-export const resposta2 = false
+const produto = {
+  nome: "Notebook",
+  preco: 3500,
+  quantidadeEstoque: 15,
+  categoria: "Eletrônicos"
+}
+ let valorTotalEstoque = produto.preco * produto.quantidadeEstoque
+
+export const resposta2 = valorTotalEstoque
 
 /* Questão 3
 Crie um objeto chamado `filme` com as propriedades:
@@ -332,7 +347,17 @@ Armazene na variável resposta3 um array contendo todas as chaves (nomes das pro
 */
 // Escreva o código da solução abaixo:
 
-export const resposta3 = false
+const filme = {
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  disponivelStreaming: true
+}
+filme.disponivelStreaming = false,
+filme.nota = 9.5
+
+export const resposta3 = Object.keys(filme)
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -344,7 +369,23 @@ O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
 
-export const resposta4 = false
+const configurances = {
+  tema: { 
+    modo: "escuro",
+    corPrincipal: "#333" ,
+  },
+  notificacoes: { 
+    email: true, 
+    push: false, 
+    sms: true 
+  },
+    idioma: "pt-BR"
+}
+
+export const resposta4 = {
+  email: configurances.notificacoes.email,
+  sms: configurances.notificacoes.sms
+}
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
@@ -359,7 +400,25 @@ Execute os seguintes passos:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta5 = false
+const contador = {
+  valor: 0,
+  incrementar: function(){
+    this.valor = this.valor + 1;
+  },
+  decrementar: function(){
+    this.valor = this.valor - 1;
+  },
+  obterValor: function(){
+    return this.valor;
+  }
+}
+
+contador.incrementar()
+contador.incrementar()
+contador.incrementar()
+contador.decrementar()
+
+export const resposta5 = contador.obterValor()
 
 /* Questão 6
 Crie um objeto chamado `termometro` com:
@@ -374,7 +433,22 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta6 = false
+const termometro = {
+  temperaturaCelsius: 25,
+  converterParaFahrenheit: function(){
+    return (this.temperaturaCelsius * 9/5) + 32;
+  },
+  definirTemperatura: function(valor){
+    this.temperaturaCelsius = valor;
+  },
+  obterTemperatura: function(){
+    return this.temperaturaCelsius + "°C"
+  },
+}
+const tempF = termometro.converterParaFahrenheit()
+termometro.definirTemperatura(100)
+
+export const resposta6 = { fahrenheit: tempF, celsius: termometro.obterTemperatura()}
 
 /* Questão 7
 Crie um objeto chamado `carrinho` que represente um carrinho de compras com:
@@ -388,7 +462,31 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta7 = false
+const carrinho = {
+  itens: [],
+
+  adicionarItem: function(nome, preco) {
+    this.itens.push({
+      nome: nome, 
+      preco: preco
+    });
+  },
+    calcularTotal: function() {
+    let total = 0;
+      for(let i = 0; i < this.itens.length; i++){
+        total = total + this.itens[i].preco
+    }
+    return total
+  },
+    quantidadeItens: function(){
+      return this.itens.length
+    }
+}
+carrinho.adicionarItem("Camiseta", 50)
+carrinho.adicionarItem("Calça", 120)
+
+export const resposta7 = {total: carrinho.calcularTotal(), quantidade: carrinho.quantidadeItens()}
+
 
 /* Questão 8
 Crie um objeto chamado `jogador` que represente um personagem de jogo com:
@@ -407,10 +505,39 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta8 = false
+const jogador = {
+  nome: "Herói",
+  vida: 100,
+  nivel: 1,
+  experiencia: 0,
+
+  atacar: function(dano) {
+    this.vida = this.vida - dano
+
+      if (this.vida < 0) {
+      this.vida = 0;
+      }
+    },
+  ganharExperiencia: function(xp) {
+    this.experiencia = this.experiencia +  xp
+
+    if(this.experiencia >= 100){
+      this.nivel = this.nivel + 1
+      this.experiencia = 0
+    }
+  },
+   status: function() {
+    return `${this.nome} - Nível ${this.nivel} - Vida: ${this.vida} - XP: ${this.experiencia}`
+   }
+  }
+jogador.atacar(30);
+jogador.ganharExperiencia(50);
+jogador.ganharExperiencia(60);
+
+export const resposta8 = jogador.status()
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
@@ -430,8 +557,36 @@ Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
 // Escreva o código da solução abaixo:
 
-export const resposta9 = false
+const receitaBolo = {
+  nome: "Bolo de Chocolate",
+  porcoes: 8,
+  ingredientes: [ 
+    "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
+    "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
+    "alho", "óleo", "frango"
+  ],
+  tempoPreparo: 45,
+  tempoForno: 30,
 
+  listarIngredientes: function() {
+    let lista = "";
+
+    for (let i = 0; i < this.ingredientes.length; i++) {
+      lista = lista + this.ingredientes[i];
+
+      if (i < this.ingredientes.length - 1) {
+        lista = lista + ", ";
+      }
+    }
+    return lista;
+  },
+  
+  calcularTempoTotal: function () {
+    return this.tempoPreparo + this.tempoForno;
+  }
+};
+
+export const resposta9 = receitaBolo.calcularTempoTotal();
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
 
