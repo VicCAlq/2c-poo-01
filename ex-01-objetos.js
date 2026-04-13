@@ -371,8 +371,18 @@ Armazene na variável resposta4 um novo objeto contendo apenas as configuraçõe
 O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
+const coniguracoes = {
+  tema: { modo: "escuro", corPrincipal: "#333" },
+  notificacoes: { email: true, push: false, sms: true },
+  idioma: "pt-BR"
+}
 
-export const resposta4 = false
+const notificacoesAtivas = {
+  email: configuracoes.notificacoes.email,
+  sms: configuracoes.notificacoes.sms
+}
+
+export const resposta4 = noificacoesAtivas
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
@@ -387,7 +397,19 @@ Execute os seguintes passos:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta5 = false
+const contador = {
+  valor: 0,
+  incrementar() { this.valor++ },
+  descrementar() { this.valor-- },
+  obterValor() { return this.valor }
+}
+
+contador.incrementar()
+contador.incrementar()
+contador.incrementar()
+contador.descrementar()
+
+export const resposta5 = contador.obterValor()
 
 /* Questão 6
 Crie um objeto chamado `termometro` com:
@@ -402,7 +424,20 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta6 = false
+const termometro = {
+  temperaturaCelsius: 25,
+  converterParaFahrenheit() { return (this.temperaturaCelsius * 9/5) + 32 },
+  definirTemperatura(valor){ this.temperatura = valor },
+  oberTemperatura() { return `${this.temperaturaCelsius}ºC` }
+}
+
+const tempF = termometro.converterParaFahrenheit();
+termometro.definirTemperatura(100);
+
+export const resposta6 = {
+  fahrenheit: tempF,
+  celsius: termometro.obterTemperatura()
+}
 
 /* Questão 7
 Crie um objeto chamado `carrinho` que represente um carrinho de compras com:
@@ -416,7 +451,34 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta7 = false
+const carrinho = {
+  itens: [],
+
+  adicionarItem: function(nome, preco) {
+    this.itens.push({ nome: nome, preco: preco })
+  },
+
+  calcularTotal: function() {
+    let total = 0
+    for (let i = 0; i < this.itens.length; i++) {
+      total += this.itens[i].preco
+    }
+    return total
+  },
+
+  quantidadeItens: function() {
+    return this.itens.length
+  }
+}
+
+carrinho.adicionarItem("Camiseta", 50)
+carrinho.adicionarItem("Calça", 120)
+
+export const resposta7 = {
+  total: carrinho.calcularTotal(),
+  quantidade: carrinho.quantidadeItens()
+}
+
 
 /* Questão 8
 Crie um objeto chamado `jogador` que represente um personagem de jogo com:
@@ -435,9 +497,40 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta8 = false
+const jogador = {
+  nome: "Herói",
+  vida: 100,
+  nivel: 1,
+  experiencia: 0,
 
-export const ingredientes = [ 
+  atacar: function(dano) {
+    this.vida -= dano
+    if (this.vida < 0) {
+      this.vida = 0
+    }
+  },
+
+  ganharExperiencia: function(xp) {
+    this.experiencia += xp
+    if (this.experiencia >= 100) {
+      this.nivel++
+      this.experiencia = 0
+    }
+  },
+
+  status: function() {
+    return this.nome + " - Nível " + this.nivel + " - Vida: " + this.vida + " - XP: " + this.experiencia
+  }
+}
+
+jogador.atacar(30)
+jogador.ganharExperiencia(50)
+jogador.ganharExperiencia(60)
+
+export const resposta8 = jogador.status()
+
+
+/*export const ingredientes = [ 
   "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
@@ -458,7 +551,23 @@ Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
 // Escreva o código da solução abaixo:
 
-export const resposta9 = false
+const receitaBolo = {
+  nome: "Bolo de Chocolate",
+  porcoes: 8,
+  ingredientes: ["farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", "fermento"],
+  tempoPreparo: 45,
+  tempoForno: 30,
+
+  listarIngredientes: function() {
+    return this.ingredientes.join(", ")
+  },
+
+  calcularTempoTotal: function() {
+    return this.tempoPreparo + this.tempoForno
+  }
+}
+
+export const resposta9 = receitaBolo.calcularTempoTotal()
 
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
