@@ -1,3 +1,4 @@
+// Oi
 /*
 Assunto - Objetos e Métodos em JavaScript
 f
@@ -717,3 +718,8 @@ cozinheiro.criarReceita("Frango Assado", ["frango", "alho", "cebola", "óleo", "
 cozinheiro.verificarPossibilidade(["ovos", "queijo", "óleo", "frango", "sal"])
 
 export const resposta12 = cozinheiro.contarReceitas()
+
+// === By - Mateu ===
+// Tá copiando pq??? Hihihihihi
+// Java > all
+// Frontend buxa
