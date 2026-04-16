@@ -345,7 +345,13 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
-
+const filme = {
+  titulo: "O Poderoso Chefão",
+  ano: 1972,
+  diretor: "Francis Ford Coppola",
+  genero: "Drama",
+  disponivelStreaming: true,
+}
 export const resposta3 = false
 
 /* Questão 4
@@ -424,7 +430,7 @@ Execute:
 export const resposta8 = false
 
 export const ingredientes = [ 
-  "farinha", "ovos", "leite", açú"car", "manteiga", "chocolate", 
+  "farinha", "ovos", "leite", "áçucar", "manteiga", "chocolate", 
   "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
   "alho", "óleo", "frango" 
 ]
