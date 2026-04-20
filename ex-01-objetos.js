@@ -331,7 +331,7 @@ const produto = {
 	quantidadeEstoque: 15,
 	categoria: "Eletrônicos"
 }
-const valorTotalEstoque = produto.quantidadeEstoque * produto.categoria
+const valorTotalEstoque = produto.quantidadeEstoque * produto.preco
 
 export const resposta2 = valorTotalEstoque
 
@@ -354,7 +354,6 @@ const filme = {
 	genero: "Drama",
 	disponivelStreaming: true
 }
-
 filme.disponivelStreaming = false
 filme.nota = 9.5
 
@@ -393,9 +392,9 @@ Execute os seguintes passos:
 
 const contador = {
 	valor: 0, 
-	incrementar: () => { this.valor++ },
-	decrementar: () => { this.valor-- },
-	obterValor: () => this.valor
+	incrementar: function() { this.valor += 1 },
+	decrementar: function() { this.valor -= 1 },
+	obterValor: function() { return this.valor }
 }
 
 for (let _ = 0; _ < 3; _++)
@@ -420,7 +419,9 @@ Execute:
 
 const termometro = {
 	temperaturaCelsius: 25,
-	converterParaFahrenheit: () => (this.temperaturaCelsius * 9/5) + 32,
+	converterParaFahrenheit: function() {
+        return (this.temperaturaCelsius * 9/5) + 32
+    },
 	definirTemperatura: (valor) => { this.temperaturaCelsius = valor },
 	obterTemperatura: () => this.temperaturaCelsius + "°C"
 }
@@ -443,11 +444,14 @@ Execute:
 
 const carrinho = {
 	itens: [],
-	adicionarItem: (nome, preco) => { this.itens.push({ nome: nome, preco: preco }) },
-	calcularTotal: () => itens.reduce((itemAnt, itemAt) => itemAnt.preco + itemAt.preco),
-	quantidadeItens: () => itens.length
+	adicionarItem: function(nome, preco) {
+        this.itens.push({ nome: nome, preco: preco })
+    },
+	calcularTotal: function() {
+        return this.itens.reduce((itemAnt, itemAt) => itemAnt.preco + itemAt.preco)
+    },
+	quantidadeItens: function() { this.itens.length }
 }
-
 carrinho.adicionarItem("Camiseta", 50)
 carrinho.adicionarItem("Calça", 120)
 
@@ -470,16 +474,34 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta8 = false
+const jogador = {
+	nome: "Herói",
+	vida: 100,
+	nivel: 1,
+	experiencia: 0,
+	atacar: function(dano) {
+        this.vida -= dano > this.vida ? this.vida : dano
+    },
+	ganharExperiencia: function(xP) {
+		this.experiencia += xP
 
-export const ingredientes = [ 
-  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
-  "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
-  "alho", "óleo", "frango" 
-]
+		if (this.experiencia >= 100) {
+			this.nivel += 1
+		    this.experiencia = 0
+		}
+	},
+	status: function() {
+        return `${this.nome} - Nível ${this.nivel} - Vida: ${this.vida} - XP: ${this.experiencia}`
+    }
+}
+jogador.atacar(30)
+jogador.ganharExperiencia(50)
+jogador.ganharExperiencia(60)
+
+export const resposta8 = jogador.status()
 
 /* Questão 9
-Utilize a lista de ingredientes acima para as próximas questões
+Utilize a lista de ingredientes abaixo para as próximas questões
 
 Crie um objeto chamado `receitaBolo` que represente uma receita de bolo de chocolate com:
 - nome: "Bolo de Chocolate"
@@ -491,9 +513,27 @@ Crie um objeto chamado `receitaBolo` que represente uma receita de bolo de choco
 - calcularTempoTotal: método que retorna tempoPreparo + tempoForno
 Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
+export const ingredientes = [ 
+  "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
+  "fermento", "sal", "queijo", "presunto", "tomate", "cebola", 
+  "alho", "óleo", "frango" 
+]
+
 // Escreva o código da solução abaixo:
 
-export const resposta9 = false
+const receitaBolo = {
+	nome: "Bolo de Chocolate",
+	porcoes: 8,
+	ingredientes: [
+		"farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", "fermento"
+	],
+	tempoPreparo: 45,
+	tempoForno: 30,
+	listarIngredientes: function() { return this.ingredientes.join(", ") },
+	calcularTempoTotal: function() { return this.tempoPreparo + this.tempoForno }
+}
+
+export const resposta9 = receitaBolo.calcularTempoTotal()
 
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
@@ -513,7 +553,26 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta10 = false
+const receitaOmelete = {
+	nome: "Omelete de Queijo",
+	porcoes: 1,
+	ingredientes: ["farinha", "ovos", "leite", "sal", "óleo", "queijo"],
+	tempoPreparo: 5,
+	tempoCozimento: 5,
+	adicionarIngrediente: function(ingrediente) {
+		if (ingredientes.includes(ingrediente)) {
+			this.ingredientes.push(ingrediente)
+		} 
+	},
+	calcularTempoTotal: function() { return this.tempoPreparo + this.tempoCozimento }
+}
+receitaOmelete.adicionarIngrediente("salsicha")
+receitaOmelete.adicionarIngrediente("presunto")
+
+export const resposta10 = {
+	tempoTotal: receitaOmelete.calcularTempoTotal(), 
+	quantidadeIngredientes: receitaOmelete.ingredientes.length
+}
 
 /* Questão 11
 Usando a mesma lista de ingredientes dos exercícios anteriores.
@@ -533,6 +592,16 @@ Adicione ambas ao livro de receitas usando adicionarReceita().
 Armazene na variável resposta11 o resultado de filtrarPorIngrediente("manteiga") (deve retornar as receitas que usam manteiga).
 */
 // Escreva o código da solução abaixo:
+
+const livroReceitas = {
+	receitas: [],
+	adicionarReceita: function(receita) { this.receitas.push(receita) },
+	buscarReceitaPorNome: function(nome) {
+		return this.receitas.find(rect => rect.nome == nome) || null
+	},
+	listarTodasReceitas: function() {return []},
+	filtrarPorIngrediente: método que recebe um ingrediente e retorna todas as receitas que contêm esse ingrediente
+}
 
 export const resposta11 = false
 
