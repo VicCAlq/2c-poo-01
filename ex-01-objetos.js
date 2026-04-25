@@ -304,11 +304,11 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
-let aluno = {
-  nome: "Neil",
+const aluno = {
+  nome: "Kamylle",
   idade: 16,
-  cidade: "Londres",
-  curso: "Econômia",
+  cidade: "Recife",
+  curso: "Programação",
 }
 
 export const resposta1 = aluno.nome
@@ -323,7 +323,7 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
-let produto = {
+const produto = {
   nome: "Notebook",
   preco: 3500,
   quantidadeEstoque: 15,
@@ -345,14 +345,15 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
-let filme = {
+const filme = {
   titulo: "O Poderoso Chefão",
   ano: 1972,
   diretor: "Francis Ford Coppola",
   genero: "Drama",
   disponivelStreaming: false,
-  nota: 9.5
+  nota: 9.5;
 }
+
 
 export const resposta3 = Object.keys(filme);
 
@@ -365,13 +366,13 @@ Armazene na variável resposta4 um novo objeto contendo apenas as configuraçõe
 O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
-let configuracoes = {
+const configuracoes = {
   tema: { modo: "escuro", corPrincipal: "#333" },
   notificacoes: { email: true, push: false, sms: true },
   idioma: "pt-BR"
 }
 
-let b =Object.fromEntries(Object.entries(configuracoes.notificacoes).filter(([_, valor]) => valor === true)
+let b = Object.fromEntries(Object.entries(configuracoes.notificacoes).filter(([_, valor]) => valor === true))
 
 
 export const resposta4 = b
@@ -387,8 +388,30 @@ Execute os seguintes passos:
 3. Armazene na variável resposta5 o resultado de obterValor()
 */
 // Escreva o código da solução abaixo:
+const contador = {
+  valor: 0,
+  
+incrementar: function() {
+  this.valor++
+},
 
-export const resposta5 = false
+decrementar: function() {
+  this.valor--
+},
+
+obterValor: function() {
+return this.valor
+}
+
+}
+
+contador.incrementar()
+contador.incrementar()
+contador.incrementar()
+contador.decrementar()
+
+
+export const resposta5 = contador.obterValor()
 
 /* Questão 6
 Crie um objeto chamado `termometro` com:
@@ -402,7 +425,21 @@ Execute:
 3. Armazene na variável resposta6 um objeto no formato: { fahrenheit: tempF, celsius: resultado de obterTemperatura() }
 */
 // Escreva o código da solução abaixo:
+const termometro = {
+  temperaturaCelsius: 25,
 
+  converterParaFahrenheit: function() {
+  this.temperaturaCelsius = (this.temperaturaCelsius * 9/5) + 32
+},
+
+definirTemperatura: function(valor) {
+
+}
+
+
+
+
+}
 export const resposta6 = false
 
 /* Questão 7
