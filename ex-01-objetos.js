@@ -361,8 +361,20 @@ Armazene na variável resposta4 um novo objeto contendo apenas as configuraçõe
 O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
+let configuracoes = {
+  tema: { modo: "escuro", corPrincipal: "#333" },
+  notificacoes: { email: true, push: false, sms: true },
+  idioma: "pt-BR"
+}
 
-export const resposta4 = false
+let ativo = {}
+
+for (let item in configuracoes.notificacoes) {
+  if (configuracoes.notificacoes[item]) {
+    ativo[item] = true
+  }
+}
+export const resposta4 = ativo
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
@@ -409,8 +421,28 @@ Execute:
 3. Armazene na variável resposta6 um objeto no formato: { fahrenheit: tempF, celsius: resultado de obterTemperatura() }
 */
 // Escreva o código da solução abaixo:
+let termometro = {
+  temperaturaCelsius: 25,
+  converterParaFahrenheit: function() {
+    return (this.temperaturaCelsius * 9/5) + 32
+  },
+  definirTemperatura: function(valor) {
+    this.temperaturaCelsius = valor
+  },
+  obterTemperatura: function() {
+    return this.temperaturaCelsius + "°C"
+  }
+}
 
-export const resposta6 = false
+let tempF = termometro.converterParaFahrenheit()
+termometro.definirTemperatura(100)
+
+let temperaturas = {
+  fahrenheit: tempF,
+  celsius: termometro.obterTemperatura()
+}
+
+export const resposta6 = temperaturas
 
 /* Questão 7
 Crie um objeto chamado `carrinho` que represente um carrinho de compras com:
@@ -423,8 +455,29 @@ Execute:
 2. Armazene na variável resposta7 um objeto com: { total: resultado de calcularTotal(), quantidade: resultado de quantidadeItens() }
 */
 // Escreva o código da solução abaixo:
-
-export const resposta7 = false
+let carrinho = {
+  itens: [],
+  adicionarItem: function(nome, preco) {
+    this.itens.push({ nome, preco })
+  },
+  calcularTotal: function() {
+  let somaValor = 0
+  this.itens.forEach(item => {
+    somaValor += item.preco
+  })
+  return somaValor
+},
+  quantidadeItens: function() {
+    return this.itens.length
+  }
+}
+carrinho.adicionarItem("Camiseta", 50)
+carrinho.adicionarItem("Calça", 120)
+let compras = {
+  total: carrinho.calcularTotal(),
+  quantidade: carrinho.quantidadeItens()
+}
+export const resposta7 = compras
 
 /* Questão 8
 Crie um objeto chamado `jogador` que represente um personagem de jogo com:
@@ -442,8 +495,30 @@ Execute:
 4. Armazene na variável resposta8 o resultado de status()
 */
 // Escreva o código da solução abaixo:
-
-export const resposta8 = false
+let jogador = {
+  nome: "Herói",
+  vida: 100,
+  nivel: 1,
+  experiencia: 0,
+  atacar: function(dano) {
+    this.vida -= dano
+    if (this.vida < 0) this.vida = 0
+  },
+  ganharExperiencia: function(xp) {
+    this.experiencia += xp
+    if (this.experiencia >= 100) {
+      this.nivel++
+      this.experiencia = 0
+    }
+  },
+  status: function() {
+    return `${this.nome} - Nível ${this.nivel} - Vida: ${this.vida} - XP: ${this.experiencia}`
+  }
+}
+jogador.atacar(30)
+jogador.ganharExperiencia(50)
+jogador.ganharExperiencia(60)
+export const resposta8 = jogador.status()
 
 export const ingredientes = [ 
   "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
@@ -465,8 +540,20 @@ Crie um objeto chamado `receitaBolo` que represente uma receita de bolo de choco
 Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
 // Escreva o código da solução abaixo:
-
-export const resposta9 = false
+let receitaBolo = {
+  nome: "Bolo de Chocolate",
+  porcoes: 8,
+  ingredientes: ["farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", "fermento"],
+  tempoPreparo: 45,
+  tempoForno: 30,
+  listarIngredientes: function() {
+    return this.ingredientes.join(", ")
+  },
+  calcularTempoTotal: function() {
+    return this.tempoPreparo + this.tempoForno
+  }
+}
+export const resposta9 = receitaBolo.calcularTempoTotal()
 
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
