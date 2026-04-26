@@ -304,14 +304,14 @@ Crie um objeto chamado `aluno` com as seguintes propriedades:
 Em seguida, armazene na variável resposta1 apenas o valor da propriedade nome do objeto aluno.
 */
 // Escreva o código da solução abaixo:
-let alunos = {
-  nome: "Triple Txxxxx",
-  idade: 67,
-  cidade: "TungTunlandiaxxxx",
-  curso: "Tecnicoxxxx em Pescariaxxxx",
-}
 
-export const resposta1 = alunos.nome
+const aluno = {
+  nome: "Thales",
+  idade: 15,
+  cidade: "Recife",
+  curso: "Programção",
+}
+export const resposta1 = aluno.nome
 
 /* Questão 2
 Crie um objeto chamado `produto` que represente um produto de uma loja com:
@@ -323,12 +323,12 @@ Em seguida, crie uma variável chamada `valorTotalEstoque` que calcule o valor t
 Armazene na variável resposta2 o valor total do estoque.
 */
 // Escreva o código da solução abaixo:
-let produto = {
+const produto = {
   nome: "Notebook",
   preco: 3500,
   quantidadeEstoque: 15,
   categoria: "Eletrônicos",
-  valorTotalEstoque: function() {
+  valorTotalEstoque: function () {
     return this.preco * this.quantidadeEstoque
   }
 }
@@ -345,21 +345,16 @@ Em seguida, altere o valor da propriedade disponivelStreaming para false e adici
 Armazene na variável resposta3 um array contendo todas as chaves (nomes das propriedades) do objeto filme usando Object.keys().
 */
 // Escreva o código da solução abaixo:
-let filme = {
+const filme = {
   titulo: "O Poderoso Chefão",
   ano: 1972,
   diretor: "Francis Ford Coppola",
   genero: "Drama",
-  disponivelStreaming: true,
-  indisponivel: function() {
-    this.disponivelStreaming = false
-  },
-  adicionarNota: function(pontuacao) {
-    this.nota = pontuacao
-    this.nota = 9.5
-  }
+  disponivelStreaming: true
 }
-export const resposta3 = false
+filme.disponivelStreaming = false
+filme.nota = 9.5
+export const resposta3 = Object.keys(filme)
 
 /* Questão 4
 Crie um objeto chamado `configuracoes` com as seguintes propriedades aninhadas:
@@ -370,8 +365,16 @@ Armazene na variável resposta4 um novo objeto contendo apenas as configuraçõe
 O resultado deve ser um objeto no formato: { email: true, sms: true }
 */
 // Escreva o código da solução abaixo:
+const configuracoes = {
+  tema: { modo: "escuro", corPrincipal: "#333" },
+  notificacoes: { email: true, push: false, sms: true },
+  idioma: "pt-BR"
+}
 
-export const resposta4 = false
+export const resposta4 = {
+  email: configuracoes.notificacoes.email,
+  sms: configuracoes.notificacoes.sms,
+}
 
 /* Questão 5
 Crie um objeto chamado `contador` com:
@@ -385,8 +388,23 @@ Execute os seguintes passos:
 3. Armazene na variável resposta5 o resultado de obterValor()
 */
 // Escreva o código da solução abaixo:
-
-export const resposta5 = false
+const contador = {
+  valor: 0,
+  incrementar: function () {
+    this.valor = this.valor + 1
+  },
+  decrementar: function () {
+    this.valor = this.valor - 1
+  },
+  obterValor: function () {
+    return this.valor
+  },
+}
+contador.incrementar()
+contador.incrementar()
+contador.incrementar()
+contador.decrementar()
+export const resposta5 = contador.obterValor()
 
 /* Questão 6
 Crie um objeto chamado `termometro` com:
@@ -400,8 +418,25 @@ Execute:
 3. Armazene na variável resposta6 um objeto no formato: { fahrenheit: tempF, celsius: resultado de obterTemperatura() }
 */
 // Escreva o código da solução abaixo:
+const termometro = {
+  temperaturaCelsius: 25,
+  converterParaFahrenheit: function () {
+    return (this.temperaturaCelsius * 9 / 5) + 32
+  },
+  definirTemperatura: function (temperatura) {
+    this.temperaturaCelsius = temperatura
+  },
+  obterTemperatura: function () {
+    return this.temperaturaCelsius + "°C"
+  },
+}
+const tempF = termometro.converterParaFahrenheit()
+termometro.definirTemperatura(100)
 
-export const resposta6 = false
+export const resposta6 = {
+  fahrenheit: tempF,
+  celsius: termometro.obterTemperatura()
+}
 
 /* Questão 7
 Crie um objeto chamado `carrinho` que represente um carrinho de compras com:
@@ -414,8 +449,33 @@ Execute:
 2. Armazene na variável resposta7 um objeto com: { total: resultado de calcularTotal(), quantidade: resultado de quantidadeItens() }
 */
 // Escreva o código da solução abaixo:
+const carrinho = {
+  itens: [],
+  adicionarItem: function(nome, preco) {
+    const item = {
+      nome: nome,
+      preco: preco,
+    }
+    this.itens.push(item)
+  },
+  calcularTotal: function() {
+    let total = 0
+    for (let i = 0; i < this.itens.length; i++) {
+      total += this.itens[i].preco
+    }
+    return total
+  },
+  quantidadeItens: function() {
+    return this.itens.length
+  }
+}
+carrinho.adicionarItem("Camiseta", 50)
+carrinho.adicionarItem("Calça", 120)
 
-export const resposta7 = false
+export const resposta7 = {
+  total: carrinho.calcularTotal(),
+  quantidade: carrinho.quantidadeItens()
+}
 
 /* Questão 8
 Crie um objeto chamado `jogador` que represente um personagem de jogo com:
@@ -433,8 +493,32 @@ Execute:
 4. Armazene na variável resposta8 o resultado de status()
 */
 // Escreva o código da solução abaixo:
-
-export const resposta8 = false
+const jogador = {
+  nome: "Herói",
+  vida: 100,
+  nivel: 1,
+  experiencia: 0,
+  atacar: function(dano) {
+    this.vida = this.vida - dano
+    if (this.vida < 0) {
+      this.vida = 0
+    }
+  },
+  ganharExperiencia: function(xp) {
+    this.experiencia = this.experiencia + xp
+    if (this.experiencia >= 100) {
+      this.experiencia = 0
+      this.nivel = this.nivel + 1
+    }
+  },
+  status: function() {
+  return this.nome + " - Nível " + this.nivel + " - Vida: " + this.vida + " - XP: " + this.experiencia
+  }
+}
+jogador.atacar(30)
+jogador.ganharExperiencia(50)
+jogador.ganharExperiencia(60)
+export const resposta8 = jogador.status()
 
 export const ingredientes = [
   "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate",
@@ -456,9 +540,20 @@ Crie um objeto chamado `receitaBolo` que represente uma receita de bolo de choco
 Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
 // Escreva o código da solução abaixo:
-
-export const resposta9 = false
-
+const receitaBolo = {
+  nome: "Bolo de Chocolate",
+  porcoes: 8,
+  ingredientes: ingredientes,
+  tempoPreparo: 45,
+  tempoForno: 30,
+  listarIngredientes: function() {
+    return this.ingredientes.join(", ")
+  },
+  calcularTempoTotal: function() {
+    return this.tempoPreparo + this.tempoForno
+  }
+}
+export const resposta9 = receitaBolo.calcularTempoTotal()
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
 
