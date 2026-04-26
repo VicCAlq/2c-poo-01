@@ -330,7 +330,7 @@ const produto = {
   categoria: "Eletrônicos"
 }
 
-let valorTotalEstoque = preco * quantidadeEstoque;
+let valorTotalEstoque = produto.preco * produto.quantidadeEstoque;
 
 export const resposta2 = valorTotalEstoque
 
@@ -372,10 +372,10 @@ const configuracoes = {
   idioma: "pt-BR"
 }
 
-let b = Object.fromEntries(Object.entries(configuracoes.notificacoes).filter(([_, valor]) => valor === true))
-
-
-export const resposta4 = b
+export const resposta4 = {
+  email: configuracoes.notificacoes.email,
+  sms: configuracoes.notificacoes.sms
+}
 /* Questão 5
 Crie um objeto chamado `contador` com:
 - valor: 0
@@ -519,7 +519,7 @@ const jogador = {
   experiencia: 0,
 
   atacar: function(dano) {
-    return this.vida -= dano;
+    this.vida -= dano;
 
     if (this.vida < 0) {
       this.vida = 0;
@@ -527,10 +527,10 @@ const jogador = {
   },
 
   ganharExperiencia: function(xp) {
-    return this.experiencia += xp
+    this.experiencia += xp
 
     if (this.experiencia  >= 100) {
-      this.nivel++
+      this.nivel++;
       this.experiencia = 0;
     }
   },
@@ -540,9 +540,9 @@ const jogador = {
   }
 }
 
-atacar(30)
-ganharExperiencia(50)
-ganharExperiencia(60)
+jogador.atacar(30)
+jogador.ganharExperiencia(50)
+jogador.ganharExperiencia(60)
 
 export const resposta8 = jogador.status()
 
