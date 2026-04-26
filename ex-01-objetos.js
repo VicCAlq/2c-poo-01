@@ -351,7 +351,7 @@ const filme = {
   diretor: "Francis Ford Coppola",
   genero: "Drama",
   disponivelStreaming: false,
-  nota: 9.5;
+  nota: 9.5
 }
 
 
@@ -391,17 +391,17 @@ Execute os seguintes passos:
 const contador = {
   valor: 0,
   
-incrementar: function() {
-  this.valor++
-},
+  incrementar: function() {
+    this.valor++
+  },
 
-decrementar: function() {
-  this.valor--
-},
+  decrementar: function() {
+    this.valor--
+  },
 
-obterValor: function() {
-return this.valor
-}
+  obterValor: function() {
+  return this.valor
+  }
 
 }
 
@@ -428,19 +428,26 @@ Execute:
 const termometro = {
   temperaturaCelsius: 25,
 
-  converterParaFahrenheit: function() {
-  this.temperaturaCelsius = (this.temperaturaCelsius * 9/5) + 32
-},
+    converterParaFahrenheit: function() {
+    return (this.temperaturaCelsius * 9/5) + 32
+  },
 
-definirTemperatura: function(valor) {
+  definirTemperatura: function(valor) {
+    this.temperaturaCelsius = valor
+  },
 
+  obterTemperatura: function() {
+    return this.temperaturaCelsius + "°C"
+  }
 }
 
+let tempF = termometro.converterParaFahrenheit();
+termometro.definirTemperatura(100)
 
-
-
+export const resposta6 = { 
+  fahrenheit: tempF, 
+  celsius: termometro.obterTemperatura()
 }
-export const resposta6 = false
 
 /* Questão 7
 Crie um objeto chamado `carrinho` que represente um carrinho de compras com:
@@ -454,8 +461,39 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
+const carrinho = {
+  itens: [],
+  
+  adicionarItem: function(nome, preco) {
+    const item = {
+      nome: nome,
+      preco: preco
+    };
 
-export const resposta7 = false
+    this.itens.push(item)
+  },
+
+  calcularTotal: function() {
+    let total = 0;
+    for(let i = 0; i < this.itens.length; i++) {
+    total += this.itens[i].preco
+    }
+
+    return total
+  },
+
+  quantidadeItens: function() {
+    return this.itens.length
+  }
+}
+
+carrinho.adicionarItem("Camiseta", 50);
+carrinho.adicionarItem("Calça", 120);
+
+export const resposta7 = { 
+  total: carrinho.calcularTotal(),
+  quantidade: carrinho.quantidadeItens() 
+}
 
 /* Questão 8
 Crie um objeto chamado `jogador` que represente um personagem de jogo com:
@@ -474,7 +512,39 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta8 = false
+const jogador = {
+  nome: "Herói",
+  vida: 100,
+  nivel: 1,
+  experiencia: 0,
+
+  atacar: function(dano) {
+    return this.vida -= dano;
+
+    if (this.vida < 0) {
+      this.vida = 0;
+    }
+  },
+
+  ganharExperiencia: function(xp) {
+    return this.experiencia += xp
+
+    if (this.experiencia  >= 100) {
+      this.nivel++
+      this.experiencia = 0;
+    }
+  },
+
+  status: function() {
+    return `${this.nome} - Nível ${this.nivel} - Vida: ${this.vida} - XP: ${this.experiencia}`;
+  }
+}
+
+atacar(30)
+ganharExperiencia(50)
+ganharExperiencia(60)
+
+export const resposta8 = jogador.status()
 
 export const ingredientes = [ 
   "farinha", "ovos", "leite", "açúcar", "manteiga", "chocolate", 
@@ -496,8 +566,23 @@ Crie um objeto chamado `receitaBolo` que represente uma receita de bolo de choco
 Armazene na variável resposta9 o resultado de calcularTempoTotal().
 */
 // Escreva o código da solução abaixo:
+const receitaBolo = {
+  nome: "Bolo de Chocolate",
+  porcoes: 8,
+  ingredientes: ingredientes,
+  tempoPreparo: 45,
+  tempoForno: 30,
 
-export const resposta9 = false
+  listarIngredientes: function() {
+    return this.ingredientes.join(", ")
+  },
+
+  calcularTempoTotal: function() {
+    return this.tempoPreparo + this.tempoForno
+  }
+}
+
+export const resposta9 = receitaBolo.calcularTempoTotal()
 
 /* Questão 10
 Usando a mesma lista de ingredientes do exercício anterior (farinha, ovos, leite, açúcar, manteiga, chocolate, fermento, sal, queijo, presunto, tomate, cebola, alho, óleo, frango).
