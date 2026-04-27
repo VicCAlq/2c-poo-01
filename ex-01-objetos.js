@@ -599,11 +599,37 @@ const livroReceitas = {
 	buscarReceitaPorNome: function(nome) {
 		return this.receitas.find(rect => rect.nome == nome) || null
 	},
-	listarTodasReceitas: function() {return []},
-	filtrarPorIngrediente: método que recebe um ingrediente e retorna todas as receitas que contêm esse ingrediente
+	listarTodasReceitas: function() {
+		const nomes = []
+
+		for (let receita of this.receitas)
+			nomes.push(receita.nome)
+
+		return nomes
+  	},
+	filtrarPorIngrediente: function(ingrediente) {
+    	return this.receitas.filter(
+			receita => receita.ingredientes.includes(ingrediente)
+		)
+  	}
 }
 
-export const resposta11 = false
+const strogonoff = {
+	nome: "Strogonoff de Frango", 
+	ingredientes: ["frango", "cebola", "alho", "manteiga"], 
+	tempo: 40
+}
+
+const macarrao = {
+	nome: "Macarrão com Queijo", 
+	ingredientes: ["queijo", "manteiga", "sal"], 
+	tempo: 20
+}
+
+livroReceitas.adicionarReceita(strogonoff)
+livroReceitas.adicionarReceita(macarrao)
+
+export const resposta11 = livroReceitas.filtrarPorIngrediente("manteiga")
 
 /* Questão 12
 Usando a mesma lista de ingredientes dos exercícios anteriores.
@@ -624,4 +650,41 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta12 = false
+const cozinheiro = {
+	nome: "Sanji", 
+	especialidade: "Comida do mar", 
+	receitasCriadas: [],
+	criarReceita: function(nomeReceita, ingredientesReceita, tempoPreparo) {
+		const receita = {
+			nome: nomeReceita, ingredientes: ingredientesReceita, tempo: tempoPreparo
+		}
+		this.receitasCriadas.push(receita)
+	},
+	verificarPossibilidade: function(ingredientes) {
+		const nomes = []
+
+		for (let receita of this.receitasCriadas) {
+			let tudoCerto = false
+
+			for (let ingrediente of receita.ingredientes) {
+				if (!ingredientes.includes(ingrediente)) {
+                    tudoCerto = false
+					break
+				}
+				tudoCerto = true
+			}
+
+			if (tudoCerto)
+				nomes.push(receita.nome)
+		}
+
+		return nomes
+	},
+	contarReceitas: function() { return this.receitasCriadas.length }
+}
+
+cozinheiro.criarReceita("Pão de Queijo", ["queijo", "ovos", "óleo"], 30)
+cozinheiro.criarReceita("Frango Assado", ["frango", "alho", "cebola", "óleo", "sal"], 60)
+cozinheiro.verificarPossibilidade(["ovos", "queijo", "óleo", "frango", "sal"])
+
+export const resposta12 = cozinheiro.contarReceitas()
