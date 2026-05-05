@@ -575,7 +575,32 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta10 = false
+const receitaOmelete = {
+  nome: "Omelete de Queijo",
+  porcoes: 1,
+  ingredientes: ["ovos", "queijo", "sal"],
+  tempoPreparo: 5,
+  tempoCozimento: 5,
+
+  adicionarIngrediente(ingrediente) {
+    if (ingredientes.includes(ingrediente)) {
+      this.ingredientes.push(ingrediente);
+    } else {
+      console.log("Ingrediente não permitido");
+    }
+  },
+  calcularTempoTotal() {
+    return this.tempoPreparo + this.tempoCozimento;
+  }
+};
+
+receitaOmelete.adicionarIngrediente("salsicha");
+receitaOmelete.adicionarIngrediente("presunto"); 
+
+export const resposta10 = {
+  tempoTotal: receitaOmelete.calcularTempoTotal(),
+  quantidadeIngredientes: receitaOmelete.ingredientes.length
+};
 
 /* Questão 11
 Usando a mesma lista de ingredientes dos exercícios anteriores.
@@ -595,8 +620,42 @@ Adicione ambas ao livro de receitas usando adicionarReceita().
 Armazene na variável resposta11 o resultado de filtrarPorIngrediente("manteiga") (deve retornar as receitas que usam manteiga).
 */
 // Escreva o código da solução abaixo:
+const strogonoff = {
+  nome: "Strogonoff de Frango",
+  ingredientes: ["frango", "cebola", "alho", "manteiga"],
+  tempo: 40
+};
 
-export const resposta11 = false
+const macarrao = {
+  nome: "Macarrão com Queijo",
+  ingredientes: ["queijo", "manteiga", "sal"],
+  tempo: 20
+};
+
+const livroReceitas = {
+  receitas: [],
+
+  adicionarReceita(receita) {
+    this.receitas.push(receita);
+  },
+
+  buscarReceitaPorNome(nome) {
+    return this.receitas.find(r => r.nome === nome) || null;
+  },
+
+  listarTodasReceitas() {
+    return this.receitas.map(r => r.nome);
+  },
+
+  filtrarPorIngrediente(ingrediente) {
+    return this.receitas.filter(r => r.ingredientes.includes(ingrediente));
+  }
+};
+
+livroReceitas.adicionarReceita(strogonoff);
+livroReceitas.adicionarReceita(macarrao);
+
+export const resposta11 = livroReceitas.filtrarPorIngrediente("manteiga");
 
 /* Questão 12
 Usando a mesma lista de ingredientes dos exercícios anteriores.
@@ -617,4 +676,37 @@ Execute:
 */
 // Escreva o código da solução abaixo:
 
-export const resposta12 = false
+const cozinheiro = {
+  nome: "Chef Ryan",
+  especialidade: "Comida Brasileira",
+  receitasCriadas: [],
+
+  criarReceita(nome, listaIngredientes, tempo) {
+    const ingredientesValidos = listaIngredientes.filter(i => ingredientes.includes(i));
+
+    const receita = {
+      nome,
+      ingredientes: ingredientesValidos,
+      tempo
+    };
+
+    this.receitasCriadas.push(receita);
+  },
+
+  verificarPossibilidade(disponiveis) {
+    return this.receitasCriadas
+      .filter(r => r.ingredientes.every(i => disponiveis.includes(i)))
+      .map(r => r.nome);
+  },
+
+  contarReceitas() {
+    return this.receitasCriadas.length;
+  }
+};
+
+cozinheiro.criarReceita("Pão de Queijo", ["queijo", "ovos", "óleo"], 30);
+cozinheiro.criarReceita("Frango Assado", ["frango", "alho", "cebola", "óleo", "sal"], 60);
+
+cozinheiro.verificarPossibilidade(["ovos", "queijo", "óleo", "frango", "sal"]);
+
+export const resposta12 = cozinheiro.contarReceitas();
